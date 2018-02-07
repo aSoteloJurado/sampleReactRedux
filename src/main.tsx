@@ -6,7 +6,12 @@ import { reducers } from './reducers';
 import { HelloWorldContainer } from './components';
 import { NameEditContainer } from './components/nameEditContainer';
 
-const store = createStore(reducers);
+const nonTypedWindow : any = window as any;
+
+const store = createStore(reducers,
+    nonTypedWindow.__REDUX_DEVTOOLS_EXTENSION__ && nonTypedWindow.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 
 ReactDOM.render(
     <Provider store={store}>
